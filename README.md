@@ -1,72 +1,72 @@
 
-# 🛡️ Optimisation de la détection des attaques Man-In-The-Middle (MIM) dans les réseaux IoT via le Machine Learning
+# 🛡️ Optimization of Man-In-The-Middle (MIM) Attack Detection in IoT Networks Using Machine Learning
 
-## 📌 Contexte
+## 📌 Context
 
-L’essor massif de l’Internet des Objets (IoT) transforme notre quotidien, avec des applications allant des maisons intelligentes à la santé connectée. Cependant, cette connectivité accrue s’accompagne d’un accroissement significatif des menaces en cybersécurité, notamment les attaques **Man-In-The-Middle (MIM)**. Les dispositifs IoT, souvent peu sécurisés, deviennent des cibles faciles pour ces intrusions.
+The rapid growth of the Internet of Things (IoT) is transforming our daily lives, with applications ranging from smart homes to connected healthcare. However, this increased connectivity also brings a significant rise in cybersecurity threats, especially **Man-In-The-Middle (MIM)** attacks. IoT devices, often poorly secured, are easy targets for such intrusions.
 
-## ❗ Problématique
+## ❗ Problem Statement
 
-Malgré l’utilisation d’IDS (Intrusion Detection Systems) traditionnels, ces outils restent insuffisants face aux attaques MIM, en particulier dans des environnements à faible puissance de calcul comme les objets connectés. L’enjeu est donc de :
-- Détecter efficacement les attaques MIM en environnement IoT,
-- Optimiser le temps de détection pour permettre une réaction rapide,
-- S’appuyer sur des modèles légers et performants de machine learning.
+Despite the use of traditional Intrusion Detection Systems (IDS), these tools remain insufficient against MIM attacks, particularly in resource-constrained environments like connected objects. The challenge is therefore to:
+- Effectively detect MIM attacks in IoT environments,
+- Optimize detection time for quick reaction,
+- Leverage lightweight and efficient machine learning models.
 
-## 🧠 IA et Algorithmes Utilisés
+## 🧠 AI & Algorithms Used
 
-Trois modèles de classification supervisée ont été développés pour détecter les paquets malveillants :
-- **Random Forest (RF)** : obtient une précision et un F1-score de 100 %.
-- **Decision Tree (DT)** : offre également une performance parfaite avec les paramètres par défaut.
-- **Logistic Regression (LR)** : atteint une précision de 98,6 %, avec une sensibilité accrue aux erreurs sur les classes positives.
+Three supervised classification models were developed to detect malicious packets:
+- **Random Forest (RF)**: achieved 100% precision and F1-score.
+- **Decision Tree (DT)**: also delivered perfect performance with default parameters.
+- **Logistic Regression (LR)**: achieved 98.6% accuracy, with higher sensitivity to errors on positive classes.
 
-Chaque modèle a été évalué à l’aide de matrices de confusion, F1-score, précision et rappel.
+Each model was evaluated using confusion matrices, F1-score, precision, and recall.
 
-## 🔧 Technologies & Outils
+## 🔧 Technologies & Tools
 
-- **Langage** : Python  
-- **Librairies** : `pandas`, `scikit-learn`, `matplotlib`, `seaborn`  
-- **Environnement** : Google Colab, Jupyter Notebook  
-- **Outils de capture de paquets** : Aircrack-ng  
-- **Formats des données** : Fichiers `.pcap`, convertis en `.csv` après filtrage  
+- **Language**: Python  
+- **Libraries**: `pandas`, `scikit-learn`, `matplotlib`, `seaborn`  
+- **Environment**: Google Colab, Jupyter Notebook  
+- **Packet capture tools**: Aircrack-ng  
+- **Data formats**: `.pcap` files, converted to `.csv` after filtering  
 
-## 🧪 Environnement de Test (Testbed)
+## 🧪 Testbed Environment
 
-Le jeu de données utilisé provient du **HCRL (Hacking and Countermeasure Research Lab)**. L’infrastructure inclut :
-- Dispositifs IoT réels : **caméra EZVIZ Wi-Fi** et **enceinte intelligente SKT NUGU**  
-- Réseau local sans fil partagé avec smartphones et ordinateurs portables  
-- Paquets capturés via mode moniteur Wi-Fi, nettoyés pour préserver la confidentialité  
+The dataset used originates from the **HCRL (Hacking and Countermeasure Research Lab)**. The infrastructure includes:
+- Real IoT devices: **EZVIZ Wi-Fi camera** and **SKT NUGU smart speaker**  
+- Wireless LAN shared with smartphones and laptops  
+- Packets captured using Wi-Fi monitor mode and sanitized to preserve privacy  
 
-Les attaques MIM ont été simulées à l’aide de Nmap et ARP Spoofing, et représentent un ensemble de 6 fichiers `.pcap`, totalisant 194 184 paquets, dont environ 52 % malveillants.
+MIM attacks were simulated using Nmap and ARP Spoofing, resulting in 6 `.pcap` files totaling 194,184 packets, with approximately 52% malicious content.
 
-## 🧹 Prétraitement des Données
+## 🧹 Data Preprocessing
 
-- Application de règles de filtrage via scripts shell pour extraire les flux MIM.
-- Étiquetage des paquets :  
-  - `Target = 1` → Attaque  
-  - `Target = 0` → Trafic normal
-- Fusion et nettoyage des fichiers `.csv` pour construire un ensemble final d'entraînement/test.
-- Découpage : **70 % entraînement** / **30 % test**
+- Filtering rules applied via shell scripts to extract MIM flows.
+- Packet labeling:  
+  - `Target = 1` → Attack  
+  - `Target = 0` → Normal traffic
+- Merged and cleaned `.csv` files to build a final training/test dataset.
+- Split: **70% training** / **30% test**
 
-## 📈 Résultats
+## 📈 Results
 
-| Modèle             | Précision | Rappel | F1-Score | Accuracy |
+| Model              | Precision | Recall | F1-Score | Accuracy |
 |--------------------|-----------|--------|----------|----------|
-| Random Forest       | 100 %     | 100 %  | 100 %    | 100 %    |
-| Decision Tree       | 100 %     | 100 %  | 100 %    | 100 %    |
-| Logistic Regression | 99 %      | 99 %   | 99 %     | 98.6 %   |
+| Random Forest       | 100%      | 100%   | 100%     | 100%     |
+| Decision Tree       | 100%      | 100%   | 100%     | 100%     |
+| Logistic Regression | 99%       | 99%    | 99%      | 98.6%    |
 
-Les modèles Random Forest et Decision Tree ont montré une efficacité parfaite sur les jeux de données testés.
+Random Forest and Decision Tree models showed perfect efficiency on the test dataset.
 
 ## 📌 Contributions
 
-- Conception d’un pipeline IA complet pour la détection des attaques MIM.
-- Utilisation de données réelles IoT capturées en environnement simulé.
-- Prototypage et validation de plusieurs modèles supervisés.
-- Proposition d’un testbed IoT reproductible pour la recherche académique.
+- Designed a complete AI pipeline for detecting MIM attacks.
+- Used real IoT data captured in a simulated environment.
+- Prototyped and validated multiple supervised learning models.
+- Proposed a reproducible IoT testbed for academic research.
 
-## 🔭 Perspectives
+## 🔭 Future Work
 
-Le travail futur envisagé inclut :
-- L’intégration de modèles Deep Learning (CNN, LSTM) pour détecter des attaques plus complexes.
-- La mise en œuvre d’un système de détection en temps réel dans des environnements Edge/Fog Computing.
-- L’enrichissement du dataset avec d’autres types d’attaques IoT (DoS, spoofing DNS, etc.).
+Future directions include:
+- Integration of Deep Learning models (CNN, LSTM) for detecting more complex attacks.
+- Implementation of a real-time detection system in Edge/Fog Computing environments.
+- Enrichment of the dataset with other IoT attack types (DoS, DNS spoofing, etc.).
