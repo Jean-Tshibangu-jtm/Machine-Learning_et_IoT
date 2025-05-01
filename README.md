@@ -64,7 +64,7 @@ Random Forest and Decision Tree models showed perfect efficiency on the test dat
 - Prototyped and validated multiple supervised learning models.
 - Proposed a reproducible IoT testbed for academic research.
 
-## 🔭 Future Work
+## Future Work
 
 Future directions include:
 - Integration of Deep Learning models (CNN, LSTM) for detecting more complex attacks.
