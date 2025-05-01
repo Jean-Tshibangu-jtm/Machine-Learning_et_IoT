@@ -1,18 +1,18 @@
 
-# 🛡️ Optimization of Man-In-The-Middle (MIM) Attack Detection in IoT Networks Using Machine Learning
+# Optimization of Man-In-The-Middle (MIM) Attack Detection in IoT Networks Using Machine Learning
 
-## 📌 Context
+## Context
 
 The rapid growth of the Internet of Things (IoT) is transforming our daily lives, with applications ranging from smart homes to connected healthcare. However, this increased connectivity also brings a significant rise in cybersecurity threats, especially **Man-In-The-Middle (MIM)** attacks. IoT devices, often poorly secured, are easy targets for such intrusions.
 
-## ❗ Problem Statement
+## Problem Statement
 
 Despite the use of traditional Intrusion Detection Systems (IDS), these tools remain insufficient against MIM attacks, particularly in resource-constrained environments like connected objects. The challenge is therefore to:
 - Effectively detect MIM attacks in IoT environments,
 - Optimize detection time for quick reaction,
 - Leverage lightweight and efficient machine learning models.
 
-## 🧠 AI & Algorithms Used
+## AI & Algorithms Used
 
 Three supervised classification models were developed to detect malicious packets:
 - **Random Forest (RF)**: achieved 100% precision and F1-score.
@@ -21,7 +21,7 @@ Three supervised classification models were developed to detect malicious packet
 
 Each model was evaluated using confusion matrices, F1-score, precision, and recall.
 
-## 🔧 Technologies & Tools
+## Technologies & Tools
 
 - **Language**: Python  
 - **Libraries**: `pandas`, `scikit-learn`, `matplotlib`, `seaborn`  
@@ -29,7 +29,7 @@ Each model was evaluated using confusion matrices, F1-score, precision, and reca
 - **Packet capture tools**: Aircrack-ng  
 - **Data formats**: `.pcap` files, converted to `.csv` after filtering  
 
-## 🧪 Testbed Environment
+## Testbed Environment
 
 The dataset used originates from the **HCRL (Hacking and Countermeasure Research Lab)**. The infrastructure includes:
 - Real IoT devices: **EZVIZ Wi-Fi camera** and **SKT NUGU smart speaker**  
@@ -38,7 +38,7 @@ The dataset used originates from the **HCRL (Hacking and Countermeasure Research
 
 MIM attacks were simulated using Nmap and ARP Spoofing, resulting in 6 `.pcap` files totaling 194,184 packets, with approximately 52% malicious content.
 
-## 🧹 Data Preprocessing
+## Data Preprocessing
 
 - Filtering rules applied via shell scripts to extract MIM flows.
 - Packet labeling:  
